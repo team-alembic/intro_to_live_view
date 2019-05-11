@@ -23,6 +23,7 @@ defmodule IntroToLiveViewWeb do
 
       import Plug.Conn
       import IntroToLiveViewWeb.Gettext
+      import Phoenix.LiveView.Controller, only: [live_render: 3]
       alias IntroToLiveViewWeb.Router.Helpers, as: Routes
     end
   end
@@ -41,6 +42,7 @@ defmodule IntroToLiveViewWeb do
 
       import IntroToLiveViewWeb.ErrorHelpers
       import IntroToLiveViewWeb.Gettext
+      import Phoenix.LiveView, only: [live_render: 2, live_render: 3]
       alias IntroToLiveViewWeb.Router.Helpers, as: Routes
     end
   end
@@ -50,6 +52,7 @@ defmodule IntroToLiveViewWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 

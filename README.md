@@ -20,5 +20,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Exercises
 
-### A Simple Clock
+### 1. A Simple Clock
 
+
+### 2. Interactive Counter
