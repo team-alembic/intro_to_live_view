@@ -4,22 +4,22 @@ defmodule IntroToLiveViewWeb.GameOfLifeLive do
   def render(assigns) do
     x_offset = div(assigns.width, 2)
     y_offset = div(assigns.height, 2)
-    size = 10
+    size = 6
     border_width = 1
     half_size = div(size, 2)
-    border = half_size - border_width
+    # border = half_size - border_width
 
     ~L"""
-    <svg viewBox="-0.5 -0.5 <%= @width * size - border_width %> <%= @height * size - border_width%>">
-      <g transform="translate(5,5)">
-        <g class="base editable">
-          <%= for x <- 0..@width-1, y <- 0..@height-1 do %>
+    <svg viewBox="-0.5 -0.5 <%= @width * size - 2 %> <%= @height * size - 2 %>">
+      <g transform="translate(<%= size %>, <%= size %>)">
+        <g>
+          <%= for {x, y} <- @world do %>
             <path
+              fill="#444"
               phx-click="toggle"
-              phx-value="<%= "#{x - x_offset},#{y - y_offset}" %>"
-              fill="<%= if {x - x_offset, y - y_offset} in @world, do: "#333", else: "#eee" %>"
-              transform="translate(<%= x * size %>, <%= y * size %>)"
-              d="<%= "M -#{half_size},-#{half_size} L -#{half_size},#{border} L #{border},#{border} L #{border},-#{half_size} Z" %>"
+              phx-value="<%= "#{x},#{y}" %>"
+              transform="translate(<%= (x + x_offset) * size %>, <%= (y + y_offset) * size %>)"
+              d="M -3,-3 L -3,2.75 L 2.75,2.75 L 2.75,-3 Z"
             />
           <% end %>
         </g>
